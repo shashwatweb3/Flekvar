@@ -848,8 +848,8 @@ function Footer() {
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">A next-generation Ethereum wallet operating system. Every token, productive by default.</p>
             <div className="mt-5 flex items-center gap-3">
-              <a className="h-9 w-9 rounded-full glass flex items-center justify-center hover:border-primary/40 transition" href="#"><Github className="h-4 w-4" /></a>
-              <a className="h-9 w-9 rounded-full glass flex items-center justify-center hover:border-primary/40 transition" href="#"><Twitter className="h-4 w-4" /></a>
+              <a className="h-9 w-9 rounded-full glass flex items-center justify-center hover:border-primary/40 transition text-xs font-mono" href="#" aria-label="GitHub">GH</a>
+              <a className="h-9 w-9 rounded-full glass flex items-center justify-center hover:border-primary/40 transition text-xs font-mono" href="#" aria-label="Twitter">X</a>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
