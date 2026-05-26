@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ArrowDown, Wallet, Zap, Shield, Layers, Coins, Activity,
   Boxes, Cpu, Network, Lock, Gauge, Repeat, Sparkles, ChevronRight,
-  CircleDot, TrendingUp, Hexagon, Github, Twitter, ExternalLink, Check,
+  CircleDot, TrendingUp, Hexagon, ExternalLink, Check,
 } from "lucide-react";
 
 /* ---------- Atoms ---------- */
