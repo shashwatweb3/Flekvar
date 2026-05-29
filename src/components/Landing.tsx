@@ -408,7 +408,7 @@ export default function Landing() {
         </div>
       </div>
 
-      <section className="bg-[var(--background)] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
+      <section className="bg-[var(--background)] px-4 py-20 sm:px-6 sm:py-24 md:py-28 lg:px-8 lg:py-32">
         <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <SectionTag>01 — Problem &amp; Solution</SectionTag>
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
@@ -416,12 +416,12 @@ export default function Landing() {
             <br />
             kills trust design.
           </h2>
-          <p className="mt-4 max-w-[560px] text-[15px] leading-[1.6] text-[var(--muted)] sm:text-[17px]">
+          <p className="mt-4 max-w-[640px] text-[15px] leading-[1.7] text-[var(--muted)] sm:text-[17px]">
             A verifier wants proof of contribution. Today that often means reading the wallet. Flekvar breaks that pattern.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-10 grid max-w-7xl gap-6 sm:mt-14 lg:grid-cols-2">
+        <div className="mx-auto mt-12 grid max-w-7xl gap-6 sm:mt-16 lg:grid-cols-2 lg:gap-8 xl:gap-10">
           <motion.div {...fadeUp}>
             <Card tone="white" className="overflow-hidden">
               <div className="flex flex-wrap items-center gap-3 border-b-[1.5px] border-[var(--ink)] bg-[#FFF0F0] px-5 py-4 sm:px-7 sm:py-5">
@@ -431,8 +431,8 @@ export default function Landing() {
                   EXPOSED
                 </span>
               </div>
-              <div className="bg-white px-5 py-5 sm:px-7 sm:py-7">
-                <p className="mb-5 text-[13px] leading-[1.6] text-[var(--muted)]">
+              <div className="bg-white px-5 py-6 sm:px-7 sm:py-8">
+                <p className="mb-6 max-w-[34rem] text-[13px] leading-[1.7] text-[var(--muted)] sm:text-[14px]">
                   Share a wallet and the verifier can infer balances, counterparties, history, behavior, and protocol activity.
                 </p>
                 {[
@@ -444,7 +444,7 @@ export default function Landing() {
                 ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[14px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3 text-[14px] last:mb-0 sm:flex-row sm:items-center"
+                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3.5 text-[14px] last:mb-0 sm:flex-row sm:items-center sm:px-5"
                   >
                     <span className="text-[13px] font-medium text-[var(--muted)]">{label}</span>
                     <span className="font-mono font-medium text-[var(--red)]">{value}</span>
@@ -463,8 +463,8 @@ export default function Landing() {
                   PRIVATE
                 </span>
               </div>
-              <div className="bg-white px-5 py-5 sm:px-7 sm:py-7">
-                <p className="mb-5 text-[13px] leading-[1.6] text-[var(--muted)]">
+              <div className="bg-white px-5 py-6 sm:px-7 sm:py-8">
+                <p className="mb-6 max-w-[34rem] text-[13px] leading-[1.7] text-[var(--muted)] sm:text-[14px]">
                   Share a private credential instead: reputation, contribution, and trust become verifiable without wallet exposure.
                 </p>
                 {[
@@ -477,7 +477,7 @@ export default function Landing() {
                 ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[14px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3 text-[14px] last:mb-0 sm:flex-row sm:items-center"
+                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3.5 text-[14px] last:mb-0 sm:flex-row sm:items-center sm:px-5"
                   >
                     <span className="text-[13px] font-medium text-[var(--muted)]">{label}</span>
                     <span className="font-mono font-bold text-[var(--primary)]">{value}</span>
@@ -489,7 +489,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section id="demo" className="bg-[var(--ink)] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
+      <section id="demo" className="bg-[var(--ink)] px-4 py-20 sm:px-6 sm:py-24 md:py-28 lg:px-8 lg:py-32">
         <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <SectionTag dark>02 — Live Demo</SectionTag>
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
@@ -497,12 +497,12 @@ export default function Landing() {
             <br />
             Toggle modes below.
           </h2>
-          <p className="mt-4 max-w-[560px] text-[15px] leading-[1.6] text-white/55 sm:text-[17px]">
+          <p className="mt-4 max-w-[640px] text-[15px] leading-[1.7] text-white/55 sm:text-[17px]">
             Switch between exposed wallet mode and private reputation mode. This is what a verifier sees.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center sm:mt-14">
+        <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center sm:mt-16">
           <div className="mb-8 flex w-full max-w-[420px] items-center gap-2 rounded-full border border-white/15 bg-white/8 p-1.5 sm:mb-10 sm:gap-4 sm:px-2">
             <button
               type="button"
@@ -526,55 +526,33 @@ export default function Landing() {
             </button>
           </div>
 
-          <motion.div {...fadeUp}>
-            <PassportCard mode={mode} />
+          <motion.div {...fadeUp} className="w-full">
+            <div className="mx-auto flex max-w-[520px] justify-center rounded-[28px] border border-white/10 bg-white/5 p-3 shadow-[0_30px_80px_rgba(0,0,0,0.26)] backdrop-blur">
+              <PassportCard mode={mode} />
+            </div>
+          </motion.div>
+
+          <motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.08 }}
+            className="mt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {[
+              ["Private by default", "A verifier gets the signal, not the wallet."],
+              ["Readable trust", "Contribution becomes legible in one credential."],
+              ["Selective proof", "Only the relevant context is shared."],
+            ].map(([title, copy]) => (
+              <Card key={title} tone="dark" interactive={false} className="h-full p-5 sm:p-6">
+                <div className="mb-4 h-2.5 w-14 rounded-full bg-[var(--primary)]/70" />
+                <h3 className="text-[20px] font-extrabold tracking-[-0.04em] text-white">{title}</h3>
+                <p className="mt-3 text-[14px] leading-[1.7] text-white/60">{copy}</p>
+              </Card>
+            ))}
           </motion.div>
 
           <p className="mt-5 px-4 text-center font-mono text-[12px] text-white/35 sm:text-[13px]">
             ← tap toggle to switch between exposure modes →
           </p>
-        </div>
-      </section>
-
-      <section className="bg-[var(--background)] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
-        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
-          <SectionTag>03 — Feature Cards</SectionTag>
-          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
-            Modern SaaS design,
-            <br />
-            reputation-first story.
-          </h2>
-        </motion.div>
-
-        <div className="mx-auto mt-10 grid max-w-7xl gap-6 sm:mt-14 md:grid-cols-2 xl:grid-cols-3">
-          {[
-            ["Private Reputation", "Trust becomes legible without exposing sensitive history.", "white"],
-            ["Portable Identity", "One reputation layer that follows the user across contexts.", "purple"],
-            ["Verifiable Contribution", "Communities can read contribution as proof, not lore.", "dark"],
-            ["Selective Disclosure", "Reveal only what the verifier needs to know.", "white"],
-            ["Reputation Layer", "A protocol-native trust surface for the onchain era.", "dark"],
-            ["Identity Without Exposure", "Proof, not surveillance.", "purple"],
-          ].map(([title, copy, tone], index) => (
-            <motion.div key={title} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
-              <Card tone={tone as "white" | "purple" | "dark"} className="h-full p-6 sm:p-7">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-current/20 bg-white/10 sm:mb-7 sm:h-14 sm:w-14">
-                  <span
-                    className={cx(
-                      "h-5 w-5 rounded-full",
-                      tone === "white" ? "bg-[var(--primary)]" : "bg-white",
-                    )}
-                  />
-                </div>
-                <h3 className="text-[24px] font-extrabold leading-[1.08] tracking-[-0.04em] sm:text-[28px]">{title}</h3>
-                <p className={cx("mt-4 text-[14px] leading-[1.7]", tone === "white" ? "text-[var(--muted)]" : "text-white/75")}>
-                  {copy}
-                </p>
-                <div className="mt-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/20 bg-white/10 text-lg">
-                  +
-                </div>
-              </Card>
-            </motion.div>
-          ))}
         </div>
       </section>
 
@@ -584,12 +562,12 @@ export default function Landing() {
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
             Building in public.
           </h2>
-          <p className="mt-4 max-w-[560px] text-[15px] leading-[1.6] text-white/50 sm:text-[17px]">
+          <p className="mt-4 max-w-[620px] text-[15px] leading-[1.7] text-white/50 sm:text-[17px]">
             Every sprint. Every milestone. Every update.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:mt-14 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-7xl gap-5 sm:mt-16 md:grid-cols-2 xl:grid-cols-4">
           {[
             ["Research", "Complete", "100%"],
             ["Prototype", "Live", "78%"],
@@ -597,62 +575,49 @@ export default function Landing() {
             ["Public Beta", "Queued", "16%"],
           ].map(([phase, status, percent], index) => (
             <motion.div key={phase} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
-              <Card tone="dark" className="h-full p-5 sm:p-6">
-                <div className="mb-5 flex items-center justify-between">
+              <Card tone="dark" className="h-full p-6 sm:p-7">
+                <div className="mb-6 flex items-center justify-between">
                   <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--primary)]">{status}</span>
                   <span className="h-3 w-3 rounded-full bg-[var(--primary)]" />
                 </div>
-                <h3 className="text-[22px] font-extrabold tracking-[-0.04em] text-white sm:text-[24px]">{phase}</h3>
+                <h3 className="text-[26px] font-extrabold tracking-[-0.04em] text-white sm:text-[30px]">{phase}</h3>
+                <p className="mt-3 text-[14px] leading-[1.7] text-white/55">
+                  {phase === "Research" && "Foundational thinking, trust primitives, and system framing are locked in."}
+                  {phase === "Prototype" && "The core interaction is live and the product surface is becoming tangible."}
+                  {phase === "Closed Alpha" && "A tighter user loop is next, with early testers shaping the credential flow."}
+                  {phase === "Public Beta" && "The broader launch opens once the proof surface feels effortless and clear."}
+                </p>
                 <div className="mt-8 h-3 rounded-full bg-white/10">
-                  <div className="h-full rounded-full bg-[var(--primary)]" style={{ width: percent }} />
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: percent }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.9, delay: index * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
+                    className="h-full rounded-full bg-[var(--primary)]"
+                  />
                 </div>
                 <div className="mt-4 flex items-center justify-between text-[13px] text-white/48">
                   <span>Progress</span>
                   <span className="font-mono">{percent}</span>
                 </div>
-                <div className="mt-8 rounded-[18px] border border-white/10 bg-white/6 p-4">
-                  <div className="h-16 rounded-[12px] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))]" />
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[var(--bg2)] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
-        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
-          <SectionTag>05 — Bento Grid</SectionTag>
-          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
-            Structured like a
-            <br />
-            serious infrastructure startup.
-          </h2>
-        </motion.div>
-
-        <div className="mx-auto mt-10 grid max-w-7xl gap-6 sm:mt-14 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            ["Built for Ethereum", "Open identity surfaces and portable reputation across the onchain stack.", "white", "lg:col-span-2"],
-            ["Privacy-first", "Readable proofs, private source data.", "purple", ""],
-            ["Designed for reputation", "Built around trust, not dashboards.", "dark", ""],
-            ["Made for builders", "Contributors, communities, and grant programs.", "white", ""],
-            ["Early access opening soon", "Founding users shape the public launch.", "purple", ""],
-            ["Trust layer for onchain users", "Portable identity and contribution context in one system.", "dark", "lg:col-span-2"],
-          ].map(([title, copy, tone, span], index) => (
-            <motion.div key={title} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
-              <Card tone={tone as "white" | "purple" | "dark"} className={cx("h-full p-6 sm:p-7", span)}>
-                <div className="inline-flex rounded-full border border-current/25 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em]">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <h3 className="mt-6 text-[24px] font-extrabold leading-[1.08] tracking-[-0.04em] sm:text-[30px]">{title}</h3>
-                <p className={cx("mt-4 text-[14px] leading-[1.7]", tone === "white" ? "text-[var(--muted)]" : "text-white/75")}>
-                  {copy}
-                </p>
-                <div className="mt-10 flex items-center justify-between">
-                  <div className="flex gap-2">
-                    <span className="h-10 w-10 rounded-[14px] border border-current/20 bg-white/10" />
-                    <span className="h-10 w-16 rounded-[14px] border border-current/20 bg-white/10" />
+                <div className="mt-8 rounded-[20px] border border-white/10 bg-white/6 p-4">
+                  <div className="mb-3 flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.14em] text-white/35">
+                    <span>Milestone</span>
+                    <span>{status}</span>
                   </div>
-                  <span className={cx("font-mono text-[11px]", tone === "white" ? "text-black/40" : "text-white/40")}>signal</span>
+                  <div className="grid gap-2">
+                    <div className="h-3 rounded-full bg-white/10">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.7, delay: 0.1 + index * 0.05 }}
+                        className="h-full rounded-full bg-white/25"
+                      />
+                    </div>
+                    <div className="h-3 w-[72%] rounded-full bg-white/10" />
+                    <div className="h-3 w-[46%] rounded-full bg-white/10" />
+                  </div>
                 </div>
               </Card>
             </motion.div>
