@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as EnvDebugRouteImport } from './routes/env-debug'
 import { Route as IndexRouteImport } from './routes/index'
 
+const EnvDebugRoute = EnvDebugRouteImport.update({
+  id: '/env-debug',
+  path: '/env-debug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/env-debug': typeof EnvDebugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/env-debug': typeof EnvDebugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/env-debug': typeof EnvDebugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/env-debug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/env-debug'
+  id: '__root__' | '/' | '/env-debug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnvDebugRoute: typeof EnvDebugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/env-debug': {
+      id: '/env-debug'
+      path: '/env-debug'
+      fullPath: '/env-debug'
+      preLoaderRoute: typeof EnvDebugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnvDebugRoute: EnvDebugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -6,6 +6,7 @@ import { defineConfig } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  envPrefix: ["VITE_", "NEXT_PUBLIC_"],
   plugins: [
     tailwindcss(),
     viteTsConfigPaths({

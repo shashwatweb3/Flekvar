@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
+import WaitlistCounter from "@/components/waitlist-counter";
+import WaitlistForm from "@/components/waitlist-form";
 
 type ButtonVariant = "primary" | "outline" | "dark" | "white";
 
@@ -105,7 +107,7 @@ function HeroVisual() {
         height="480"
         viewBox="0 0 480 480"
         fill="none"
-        className="h-auto w-full max-w-[320px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)] sm:max-w-[420px] lg:max-w-[480px]"
+        className="h-auto w-full max-w-[260px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[440px] xl:max-w-[480px]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
@@ -176,40 +178,40 @@ function PassportCard({ mode }: { mode: "raw" | "zk" }) {
   const raw = mode === "raw";
 
   return (
-    <div className="w-full max-w-[420px] overflow-hidden rounded-[20px] shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:translate-y-[-4px] hover:scale-[1.02] sm:rounded-[24px]">
-      <div className="bg-[linear-gradient(135deg,#1a2744_0%,#0f1a38_60%,#162040_100%)] px-5 pb-5 pt-6 sm:px-8 sm:pb-6 sm:pt-8">
+    <div className="w-full max-w-[340px] overflow-hidden rounded-[20px] shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:translate-y-[-4px] hover:scale-[1.02] sm:max-w-[420px] sm:rounded-[24px]">
+      <div className="bg-[linear-gradient(135deg,#1a2744_0%,#0f1a38_60%,#162040_100%)] px-4 pb-4 pt-5 sm:px-8 sm:pb-6 sm:pt-8">
         <div className="mb-6 flex items-center justify-between sm:mb-7">
           <div>
-            <div className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/45">Flekvar Credential</div>
-            <div className="mt-1 font-mono text-[11px] text-white/35">PRIVATE REPUTATION LAYER</div>
+            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/45 sm:text-[11px]">Flekvar Credential</div>
+            <div className="mt-1 font-mono text-[10px] text-white/35 sm:text-[11px]">PRIVATE REPUTATION LAYER</div>
           </div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-[var(--primary)] bg-[rgba(139,92,246,0.15)] sm:h-[52px] sm:w-[52px]">
-            <div className="h-6 w-6 rounded-full border-[1.5px] border-[var(--primary)]" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border-[1.5px] border-[var(--primary)] bg-[rgba(139,92,246,0.15)] sm:h-[52px] sm:w-[52px]">
+            <div className="h-5 w-5 rounded-full border-[1.5px] border-[var(--primary)] sm:h-6 sm:w-6" />
           </div>
         </div>
-        <div className="text-[24px] font-extrabold tracking-[-0.03em] text-white sm:text-[30px]">Flekvar Passport</div>
-        <div className="mt-1 text-[12px] font-semibold tracking-[0.18em] text-[var(--primary)]">VERIFIED PRIVATELY</div>
+        <div className="text-[20px] font-extrabold tracking-[-0.03em] text-white sm:text-[30px]">Flekvar Passport</div>
+        <div className="mt-1 text-[11px] font-semibold tracking-[0.18em] text-[var(--primary)] sm:text-[12px]">VERIFIED PRIVATELY</div>
       </div>
 
       <div className="bg-[#F8F7F2]">
-        <div className="flex border-b border-black/10">
-          <div className="flex h-[104px] w-[84px] shrink-0 items-center justify-center border-r border-black/10 bg-[var(--bg2)] sm:h-[120px] sm:w-[100px]">
+        <div className="grid grid-cols-[72px_1fr] border-b border-black/10 sm:flex">
+          <div className="flex h-[84px] w-[72px] shrink-0 items-center justify-center border-r border-black/10 bg-[var(--bg2)] sm:h-[120px] sm:w-[100px]">
             <svg width="56" height="60" viewBox="0 0 56 60" fill="none">
               <circle cx="28" cy="22" r="14" fill="#CBD5E1" />
               <path d="M4 56c0-13.3 10.7-24 24-24s24 10.7 24 24" fill="#CBD5E1" />
             </svg>
           </div>
-          <div className="min-w-0 flex-1 px-4 py-4 sm:px-5">
+          <div className="min-w-0 flex-1 px-3 py-3 sm:px-5 sm:py-4">
             <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Holder</div>
-            <div className="mb-3 mt-1 truncate font-mono text-[13px] font-bold text-[var(--ink)] sm:text-[14px]">{raw ? "0x84f1...dA8b" : "Anonymous"}</div>
+            <div className="mb-2 mt-1 truncate font-mono text-[12px] font-bold text-[var(--ink)] sm:mb-3 sm:text-[14px]">{raw ? "0x84f1...dA8b" : "Anonymous"}</div>
             <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Wallet</div>
-            <div className="mt-1 font-mono text-[12px] font-bold text-[var(--ink)] sm:text-[13px]">{raw ? "Publicly visible" : "Verified privately"}</div>
-            <div className="mt-3 font-mono text-[11px] text-[var(--muted)]">issuer: did:flekvar:credential</div>
+            <div className="mt-1 font-mono text-[11px] font-bold text-[var(--ink)] sm:text-[13px]">{raw ? "Publicly visible" : "Verified privately"}</div>
+            <div className="mt-2 font-mono text-[10px] text-[var(--muted)] sm:mt-3 sm:text-[11px]">issuer: did:flekvar:credential</div>
           </div>
         </div>
 
-        <div className="px-4 py-4 sm:px-5">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="px-3 py-3 sm:px-5 sm:py-4">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-3 sm:gap-4">
             {[
               ["Reputation Score", raw ? "Derived from wallet" : "92 / 100"],
               ["Builder Since", "2021"],
@@ -220,7 +222,7 @@ function PassportCard({ mode }: { mode: "raw" | "zk" }) {
             ].map(([label, value]) => (
               <div key={label}>
                 <div className="font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">{label}</div>
-                <div className={cx("mt-1 font-mono text-[13px] font-bold text-[var(--ink)]", raw && label !== "Builder Since" && "blur-[2px]")}>
+                <div className={cx("mt-1 font-mono text-[11px] font-bold text-[var(--ink)] sm:text-[13px]", raw && label !== "Builder Since" && "blur-[2px]")}>
                   {value}
                 </div>
               </div>
@@ -230,24 +232,24 @@ function PassportCard({ mode }: { mode: "raw" | "zk" }) {
 
         <div
           className={cx(
-            "mx-4 mb-4 mt-1 flex items-center justify-between gap-3 rounded-[14px] border px-4 py-3 sm:mx-5",
+            "mx-3 mb-3 mt-1 flex items-center justify-between gap-3 rounded-[14px] border px-3 py-2.5 sm:mx-5 sm:mb-4 sm:px-4 sm:py-3",
             raw ? "border-[var(--ink)] bg-white" : "border-[var(--ink)] bg-[var(--primary)]",
           )}
         >
           <div>
-            <div className={cx("text-[12px] font-bold", raw ? "text-[var(--ink)]" : "text-white")}>
+            <div className={cx("text-[11px] font-bold sm:text-[12px]", raw ? "text-[var(--ink)]" : "text-white")}>
               {raw ? "Raw wallet mode" : "ZK proof valid"}
             </div>
-            <div className={cx("font-mono text-[11px]", raw ? "text-[var(--muted)]" : "text-white/75")}>
+            <div className={cx("font-mono text-[10px] sm:text-[11px]", raw ? "text-[var(--muted)]" : "text-white/75")}>
               {raw ? "Every signal leaks from the wallet" : "Share proof, not private activity"}
             </div>
           </div>
-          <div className={cx("font-mono text-[11px] font-bold", raw ? "text-[var(--ink)]" : "text-white")}>
+          <div className={cx("font-mono text-[10px] font-bold sm:text-[11px]", raw ? "text-[var(--ink)]" : "text-white")}>
             {raw ? "WARNING" : "VALID"}
           </div>
         </div>
 
-        <div className="overflow-x-auto bg-[#1a2744] px-4 py-4 font-mono text-[10px] leading-6 text-white/45 sm:px-5 sm:text-[11px]">
+        <div className="overflow-x-auto bg-[#1a2744] px-3 py-3 font-mono text-[9px] leading-5 text-white/45 sm:px-5 sm:py-4 sm:text-[11px] sm:leading-6">
           FLKVR&lt;&lt;&lt;PRIVATE&lt;&lt;&lt;REPUTATION&lt;&lt;&lt;PORTABLE
           <br />
           VERIFIED&lt;CONTRIBUTOR&lt;LEVELIV&lt;&lt;&lt;ACTIVE
@@ -261,6 +263,7 @@ export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
   const [mode, setMode] = useState<"raw" | "zk">("zk");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const ctaRef = useRef<HTMLDivElement>(null);
   const [pointer, setPointer] = useState({ x: 50, y: 50 });
   const reduceMotion = useReducedMotion();
@@ -355,47 +358,94 @@ export default function Landing() {
 
       <section
         id="vision"
-        className="px-4 pb-16 pt-[112px] sm:px-6 sm:pb-20 sm:pt-[128px] md:pt-[144px] lg:px-8 lg:pb-24"
+        className="relative overflow-hidden px-5 pb-12 pt-[104px] sm:px-8 sm:pb-16 sm:pt-[120px] md:pt-[144px] lg:px-12 lg:pb-24"
       >
-        <div className="mx-auto grid min-h-[calc(100vh-112px)] max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[var(--ink)] bg-[var(--primary)] px-4 py-1.5 text-[12px] font-semibold text-white sm:text-[13px]">
-              <span>🔐</span> Privacy-first reputation protocol
-            </div>
-            <h1 className="mt-6 text-4xl font-extrabold leading-[0.96] tracking-[-0.06em] text-[var(--ink)] sm:mt-7 sm:text-5xl md:text-6xl lg:text-7xl xl:text-[82px]">
-              Proof without
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 top-8 h-80 bg-[radial-gradient(circle_at_top,rgba(139,92,246,0.14),transparent_70%)]" />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, -14, 0], x: [0, 8, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-[8%] top-[22%] h-2 w-2 rounded-full bg-[var(--primary)]/50"
+          />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, 16, 0], x: [0, -10, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute right-[12%] top-[28%] h-2.5 w-2.5 rounded-full bg-[var(--primary)]/35"
+          />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, -12, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
+            className="absolute bottom-[24%] left-[16%] h-1.5 w-1.5 rounded-full bg-[var(--primary)]/55"
+          />
+        </div>
+        <div className="mx-auto grid min-h-[calc(100vh-112px)] max-w-7xl items-center gap-8 md:gap-12 lg:grid-cols-2 lg:gap-20 xl:gap-24">
+          <div className="mx-auto flex w-full max-w-[650px] flex-col items-center text-center lg:mx-0 lg:items-start lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-[var(--ink)] bg-[var(--primary)] px-4 py-1.5 text-[12px] font-semibold text-white sm:text-[13px]"
+            >
+              <span>🔐</span> Private professional identity for Web3
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.06 }}
+              className="mt-4 max-w-[650px] text-[42px] font-extrabold leading-[1.05] tracking-[-0.06em] text-[var(--ink)] sm:mt-6 sm:text-[48px] sm:leading-[1.04] md:mt-9 md:text-[56px] md:leading-[1] lg:text-[72px] lg:leading-[0.98] xl:text-[88px] xl:leading-[0.95]"
+            >
+              In Web3,
               <br />
-              <span className="rounded-md bg-[var(--primary)] px-2 text-white">exposure.</span>
-            </h1>
-            <p className="mt-5 max-w-[540px] text-[16px] leading-[1.65] text-[var(--muted)] sm:mt-6 sm:text-[18px]">
-              Flekvar helps users prove reputation, contribution, and credibility onchain without exposing wallets, balances, or private activity.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+              your resume is
+              <br />
+              <span className="my-2 inline-block rounded-md bg-[var(--primary)] px-2 py-1 text-white sm:my-3 sm:px-3 sm:py-1.5">
+                your wallet.
+              </span>
+              <br />
+              Flekvar changes that.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+              className="mt-6 max-w-[620px] text-[16px] leading-[1.7] text-[var(--muted)] sm:mt-6 sm:text-[18px]"
+            >
+              Today, proving your work history often means exposing your entire wallet.
+              Flekvar lets you prove your professional track record without revealing balances, transactions, or financial history.
+            </motion.p>
+            <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
               <Button className="w-full sm:w-auto">View Demo</Button>
-              <Button variant="outline" className="w-full sm:w-auto">Join Waitlist</Button>
             </div>
-            <div className="mt-10 grid gap-6 border-t border-black/15 pt-8 sm:mt-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-6 sm:pt-10 lg:grid-cols-3">
+            <WaitlistForm tone="light" className="mt-4 max-w-[520px]" />
+            <WaitlistCounter tone="light" className="mt-4" />
+            <div className="mt-8 grid w-full gap-3 border-t border-black/15 pt-6 sm:mt-10 sm:gap-4 sm:pt-8 lg:grid-cols-1 lg:gap-y-4 xl:grid-cols-3">
               {[
-                ["Portable Identity", "Private by default"],
-                ["Selective Disclosure", "Context-aware proof"],
-                ["Verified Reputation", "Readable trust signal"],
-              ].map(([value, label]) => (
-                <div key={value}>
-                  <div className="text-[22px] font-extrabold leading-[1.06] tracking-[-0.04em] text-[var(--ink)] sm:text-[26px] lg:text-[30px]">
-                    {value}
-                  </div>
-                  <div className="mt-1 text-[13px] text-[var(--muted)] sm:text-[14px]">{label}</div>
-                </div>
+                "Private by default",
+                "Portable identity",
+                "Verifiable contribution",
+              ].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.18 + index * 0.08 }}
+                  className="flex items-center gap-3"
+                >
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--ink)] bg-white text-[12px] font-bold text-[var(--primary)]">
+                    ✓
+                  </span>
+                  <div className="text-[15px] font-semibold text-[var(--ink)] sm:text-[16px]">{item}</div>
+                </motion.div>
               ))}
             </div>
           </div>
-          <div className="order-first mx-auto w-full max-w-[520px] lg:order-none lg:max-w-none">
+          <div className="mx-auto flex w-full items-center justify-center lg:max-w-none">
             <HeroVisual />
           </div>
         </div>
       </section>
 
-      <div className="overflow-hidden bg-[var(--ink)] px-4 py-8 sm:px-6 lg:px-8">
+      <div className="overflow-hidden bg-[var(--ink)] px-5 py-8 sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 md:flex-row md:items-center md:gap-6">
           <div className="text-[13px] font-medium text-white/42">Early builders joining the journey.</div>
           <div className="flex flex-1 flex-wrap items-center gap-x-8 gap-y-3 lg:gap-12">
@@ -408,126 +458,133 @@ export default function Landing() {
         </div>
       </div>
 
-      <section className="bg-[var(--background)] px-4 py-20 sm:px-6 sm:py-24 md:py-28 lg:px-8 lg:py-32">
+      <section className="bg-[var(--background)] px-5 py-12 sm:px-8 sm:py-16 md:py-28 lg:px-12 lg:py-32">
         <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <SectionTag>01 — Problem &amp; Solution</SectionTag>
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
-            Wallet exposure
+            Your work history
             <br />
-            kills trust design.
+            shouldn&apos;t expose your
+            <br />
+            financial history.
           </h2>
           <p className="mt-4 max-w-[640px] text-[15px] leading-[1.7] text-[var(--muted)] sm:text-[17px]">
-            A verifier wants proof of contribution. Today that often means reading the wallet. Flekvar breaks that pattern.
+            Web3 created transparent work histories. But it never created a private way to share them.
+            Today your work identity and financial identity are the same thing. Flekvar separates them.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-12 grid max-w-7xl gap-6 sm:mt-16 lg:grid-cols-2 lg:gap-8 xl:gap-10">
+        <div className="mx-auto mt-10 grid max-w-7xl gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-2 lg:gap-8 xl:gap-10">
           <motion.div {...fadeUp}>
             <Card tone="white" className="overflow-hidden">
-              <div className="flex flex-wrap items-center gap-3 border-b-[1.5px] border-[var(--ink)] bg-[#FFF0F0] px-5 py-4 sm:px-7 sm:py-5">
+              <div className="flex flex-wrap items-center gap-3 border-b-[1.5px] border-t-[6px] border-[var(--ink)] border-t-[var(--red)] bg-[#FFF0F0] px-5 py-4 sm:px-7 sm:py-5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[var(--red)]" />
-                <h3 className="text-[18px] font-extrabold sm:text-[20px]">Without Flekvar</h3>
+                <h3 className="text-[18px] font-extrabold sm:text-[20px]">WITHOUT FLEKVAR</h3>
                 <span className="rounded-full border border-[var(--red)] bg-[#FFE5E5] px-3 py-1 text-[11px] font-bold text-[var(--red)] sm:ml-auto">
-                  EXPOSED
+                  WARNING
                 </span>
               </div>
-              <div className="bg-white px-5 py-6 sm:px-7 sm:py-8">
+              <div className="bg-white px-4 py-5 sm:px-7 sm:py-8">
                 <p className="mb-6 max-w-[34rem] text-[13px] leading-[1.7] text-[var(--muted)] sm:text-[14px]">
-                  Share a wallet and the verifier can infer balances, counterparties, history, behavior, and protocol activity.
+                  Sharing proof of your work also exposes your balances, transaction history, and network context.
                 </p>
                 {[
                   ["Wallet address", "0x84f1...dA8b"],
-                  ["Balances", "Stablecoins, grants, governance"],
-                  ["Transaction history", "Publicly visible"],
-                  ["Public activity", "Voting and transfers exposed"],
-                  ["Protocol interactions", "Linkable across apps"],
+                  ["Balances", "Visible"],
+                  ["Transaction History", "Visible"],
+                  ["Protocol Activity", "Visible"],
+                  ["Counterparties", "Visible"],
                 ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3.5 text-[14px] last:mb-0 sm:flex-row sm:items-center sm:px-5"
+                    className="mb-2.5 flex flex-col items-start justify-between gap-1.5 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-3.5 py-3 text-[13px] last:mb-0 sm:mb-3 sm:flex-row sm:items-center sm:px-5 sm:py-3.5 sm:text-[14px]"
                   >
                     <span className="text-[13px] font-medium text-[var(--muted)]">{label}</span>
                     <span className="font-mono font-medium text-[var(--red)]">{value}</span>
                   </div>
                 ))}
+                <div className="mt-4 rounded-[16px] border-[1.5px] border-[var(--red)]/40 bg-[#FFF4F4] px-3.5 py-3 text-[13px] font-semibold text-[var(--red)] sm:mt-5 sm:px-4 sm:py-3.5 sm:text-[14px]">
+                  Everything exposed.
+                </div>
               </div>
             </Card>
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 }}>
-            <Card tone="white" className="overflow-hidden">
+            <Card tone="white" className="overflow-hidden shadow-[0_0_0_1px_rgba(139,92,246,0.24),5px_5px_0px_var(--ink),0_18px_50px_rgba(139,92,246,0.14)]">
               <div className="flex flex-wrap items-center gap-3 border-b-[1.5px] border-[var(--ink)] bg-[var(--primary)] px-5 py-4 sm:px-7 sm:py-5">
                 <span className="h-2.5 w-2.5 rounded-full bg-white" />
-                <h3 className="text-[18px] font-extrabold text-white sm:text-[20px]">With Flekvar</h3>
+                <h3 className="text-[18px] font-extrabold text-white sm:text-[20px]">WITH FLEKVAR</h3>
                 <span className="rounded-full border border-[var(--ink)] bg-white px-3 py-1 text-[11px] font-bold text-[var(--ink)] sm:ml-auto">
-                  PRIVATE
+                  VERIFIED
                 </span>
               </div>
-              <div className="bg-white px-5 py-6 sm:px-7 sm:py-8">
+              <div className="bg-white px-4 py-5 sm:px-7 sm:py-8">
                 <p className="mb-6 max-w-[34rem] text-[13px] leading-[1.7] text-[var(--muted)] sm:text-[14px]">
-                  Share a private credential instead: reputation, contribution, and trust become verifiable without wallet exposure.
+                  You share a private professional credential instead of a financial footprint.
                 </p>
                 {[
-                  ["Reputation Score", "92 / 100"],
                   ["Verified Contributor", "Active"],
                   ["Builder Since", "2021"],
-                  ["Contribution Level", "Level IV"],
-                  ["Skills", "Infra / Research"],
-                  ["Trust Score", "High confidence"],
+                  ["Contribution", "Level IV"],
+                  ["Specialization", "Infrastructure Research"],
+                  ["Credential", "Private"],
+                  ["Trust Score", "Verified"],
                 ].map(([label, value]) => (
                   <div
                     key={label}
-                    className="mb-3 flex flex-col items-start justify-between gap-2 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-4 py-3.5 text-[14px] last:mb-0 sm:flex-row sm:items-center sm:px-5"
+                    className="mb-2.5 flex flex-col items-start justify-between gap-1.5 rounded-[16px] border-[1.5px] border-[var(--ink)] bg-[var(--bg)] px-3.5 py-3 text-[13px] last:mb-0 sm:mb-3 sm:flex-row sm:items-center sm:px-5 sm:py-3.5 sm:text-[14px]"
                   >
                     <span className="text-[13px] font-medium text-[var(--muted)]">{label}</span>
                     <span className="font-mono font-bold text-[var(--primary)]">{value}</span>
                   </div>
                 ))}
+                <div className="mt-4 rounded-[16px] border-[1.5px] border-[var(--primary)]/40 bg-[var(--primary-glow)] px-3.5 py-3 text-[13px] font-semibold text-[var(--ink)] sm:mt-5 sm:px-4 sm:py-3.5 sm:text-[14px]">
+                  Only what matters is shared.
+                </div>
               </div>
             </Card>
           </motion.div>
         </div>
       </section>
 
-      <section id="demo" className="bg-[var(--ink)] px-4 py-20 sm:px-6 sm:py-24 md:py-28 lg:px-8 lg:py-32">
+      <section id="demo" className="bg-[var(--ink)] px-5 py-12 sm:px-8 sm:py-16 md:py-28 lg:px-12 lg:py-32">
         <motion.div {...fadeUp} className="mx-auto max-w-7xl">
           <SectionTag dark>02 — Live Demo</SectionTag>
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
-            The Flekvar Passport.
-            <br />
-            Toggle modes below.
+            See the difference.
           </h2>
           <p className="mt-4 max-w-[640px] text-[15px] leading-[1.7] text-white/55 sm:text-[17px]">
-            Switch between exposed wallet mode and private reputation mode. This is what a verifier sees.
+            A verifier asks you to prove your track record. Raw wallet view vs Flekvar credential.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center sm:mt-16">
-          <div className="mb-8 flex w-full max-w-[420px] items-center gap-2 rounded-full border border-white/15 bg-white/8 p-1.5 sm:mb-10 sm:gap-4 sm:px-2">
+        <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center sm:mt-14">
+          <div className="mb-6 flex w-full max-w-[340px] items-center gap-1.5 rounded-full border border-white/15 bg-white/8 p-1 sm:mb-8 sm:max-w-[420px] sm:gap-4 sm:p-1.5 sm:px-2">
             <button
               type="button"
               onClick={() => setMode("raw")}
               className={cx(
-                "flex-1 rounded-full px-4 py-2.5 text-[13px] font-semibold transition-all sm:px-6 sm:text-[14px]",
+                "flex-1 rounded-full px-3 py-2 text-[12px] font-semibold transition-all sm:px-6 sm:py-2.5 sm:text-[14px]",
                 mode === "raw" ? "bg-white text-[var(--ink)]" : "bg-transparent text-white/50",
               )}
             >
-              Raw Wallet
+              Raw Wallet View
             </button>
             <button
               type="button"
               onClick={() => setMode("zk")}
               className={cx(
-                "flex-1 rounded-full px-4 py-2.5 text-[13px] font-semibold transition-all sm:px-6 sm:text-[14px]",
+                "flex-1 rounded-full px-3 py-2 text-[12px] font-semibold transition-all sm:px-6 sm:py-2.5 sm:text-[14px]",
                 mode === "zk" ? "bg-[var(--primary)] text-white" : "bg-transparent text-white/50",
               )}
             >
-              ZK Private
+              Flekvar Credential
             </button>
           </div>
 
           <motion.div {...fadeUp} className="w-full">
-            <div className="mx-auto flex max-w-[520px] justify-center rounded-[28px] border border-white/10 bg-white/5 p-3 shadow-[0_30px_80px_rgba(0,0,0,0.26)] backdrop-blur">
+            <div className="mx-auto flex max-w-[360px] justify-center rounded-[24px] border border-white/10 bg-white/5 p-2 shadow-[0_30px_80px_rgba(0,0,0,0.26)] backdrop-blur sm:max-w-[520px] sm:rounded-[28px] sm:p-3">
               <PassportCard mode={mode} />
             </div>
           </motion.div>
@@ -535,11 +592,11 @@ export default function Landing() {
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.08 }}
-            className="mt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-6 grid w-full max-w-5xl gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
           >
             {[
               ["Private by default", "A verifier gets the signal, not the wallet."],
-              ["Readable trust", "Contribution becomes legible in one credential."],
+              ["Readable trust", "Your work history becomes instantly legible."],
               ["Selective proof", "Only the relevant context is shared."],
             ].map(([title, copy]) => (
               <Card key={title} tone="dark" interactive={false} className="h-full p-5 sm:p-6">
@@ -556,9 +613,117 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="bg-[var(--ink)] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8 lg:py-28">
+      <section className="bg-[var(--background)] px-5 py-12 sm:px-8 sm:py-16 md:py-24 lg:px-12 lg:py-28">
         <motion.div {...fadeUp} className="mx-auto max-w-7xl">
-          <SectionTag dark>04 — Building In Public</SectionTag>
+          <SectionTag>03 — Use Cases</SectionTag>
+          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+            Real workflows.
+            <br />
+            Private proof.
+          </h2>
+        </motion.div>
+
+        <div className="mx-auto mt-8 grid max-w-7xl gap-4 sm:mt-12 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {[
+            ["Protocol Hiring", "Prove experience without exposing your wallet.", "white"],
+            ["Builder Grants", "Show contribution history privately.", "purple"],
+            ["Community Access", "Unlock opportunities through verified reputation.", "dark"],
+          ].map(([title, copy, tone], index) => (
+            <motion.div key={title} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
+              <Card tone={tone as "white" | "purple" | "dark"} className="h-full p-5 sm:p-7">
+                <div className="inline-flex rounded-full border border-current/25 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em]">
+                  0{index + 1}
+                </div>
+                <h3 className="mt-6 text-[26px] font-extrabold leading-[1.08] tracking-[-0.04em] sm:text-[30px]">{title}</h3>
+                <p className={cx("mt-4 text-[14px] leading-[1.7]", tone === "white" ? "text-[var(--muted)]" : "text-white/75")}>
+                  {copy}
+                </p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[var(--bg2)] px-5 py-12 sm:px-8 sm:py-16 md:py-24 lg:px-12 lg:py-28">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
+          <SectionTag>04 — What Flekvar Is</SectionTag>
+          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+            A new category
+            <br />
+            for Web3.
+          </h2>
+          <p className="mt-4 max-w-[680px] text-[15px] leading-[1.7] text-[var(--muted)] sm:text-[17px]">
+            Flekvar is a private work credential. Not a profile. Not a credit score. Not a reputation leaderboard.
+            A verifiable professional identity layer for Web3.
+          </p>
+        </motion.div>
+
+        <div className="mx-auto mt-8 grid max-w-7xl gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {[
+            "Work Credential",
+            "Private by Default",
+            "Portable Across Communities",
+            "Verifiable Contribution",
+          ].map((title, index) => (
+            <motion.div key={title} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
+              <Card tone={index % 2 === 0 ? "white" : "purple"} className="h-full p-5 sm:p-6">
+                <div className="mb-5 inline-flex h-8 w-8 items-center justify-center rounded-full border border-current/25 text-[14px] font-bold">
+                  ✓
+                </div>
+                <h3 className="text-[22px] font-extrabold leading-[1.1] tracking-[-0.04em] sm:text-[24px]">{title}</h3>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[var(--background)] px-5 py-12 sm:px-8 sm:py-16 md:py-24 lg:px-12 lg:py-28">
+        <motion.div {...fadeUp} className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div>
+            <SectionTag>05 — What Flekvar Is Not</SectionTag>
+            <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+              Clear category.
+              <br />
+              No confusion.
+            </h2>
+          </div>
+
+          <Card tone="white" interactive={false} className="p-6 sm:p-7">
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">Not</div>
+                <div className="space-y-3">
+                  {["Credit Score", "Lending Product", "KYC Tool", "Public Reputation Leaderboard"].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-[15px] font-medium text-[var(--ink)]">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--red)] text-[var(--red)]">
+                        ✕
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">Instead</div>
+                <div className="space-y-3">
+                  {["Private Professional Identity", "Portable Work Credential", "Verifiable Reputation Layer"].map((item) => (
+                    <div key={item} className="flex items-center gap-3 text-[15px] font-medium text-[var(--ink)]">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--primary)] text-[var(--primary)]">
+                        ✓
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </section>
+
+      <section className="bg-[var(--ink)] px-5 py-12 sm:px-8 sm:py-16 md:py-24 lg:px-12 lg:py-28">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
+          <SectionTag dark>06 — Building In Public</SectionTag>
           <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
             Building in public.
           </h2>
@@ -567,18 +732,34 @@ export default function Landing() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-12 grid max-w-7xl gap-5 sm:mt-16 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto mt-10 max-w-7xl sm:mt-16">
+          <div className="relative hidden h-px bg-white/10 md:block">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
+              className="absolute left-0 top-0 h-px bg-[var(--primary)]"
+            />
+          </div>
+          <div className="relative mt-0 grid gap-4 md:mt-8 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
+          <div className="absolute bottom-0 left-[18px] top-0 w-px bg-white/10 md:hidden" />
           {[
-            ["Research", "Complete", "100%"],
-            ["Prototype", "Live", "78%"],
-            ["Closed Alpha", "Next", "42%"],
-            ["Public Beta", "Queued", "16%"],
-          ].map(([phase, status, percent], index) => (
-            <motion.div key={phase} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }}>
+            ["Research", "✓", "Complete", "100%"],
+            ["Prototype", "✓", "Live", "78%"],
+            ["Closed Alpha", "⚡", "Now", "42%"],
+            ["Public Beta", "○", "Next", "16%"],
+          ].map(([phase, icon, status, percent], index) => (
+            <motion.div key={phase} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.05 }} className="relative pl-10 md:pl-0">
+              <span className="absolute left-0 top-8 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-[var(--ink)] text-[16px] text-[var(--primary)] md:hidden">
+                {icon}
+              </span>
               <Card tone="dark" className="h-full p-6 sm:p-7">
                 <div className="mb-6 flex items-center justify-between">
-                  <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[var(--primary)]">{status}</span>
-                  <span className="h-3 w-3 rounded-full bg-[var(--primary)]" />
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/8 text-[18px] text-[var(--primary)]">
+                    {icon}
+                  </span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--primary)]">{percent}</span>
                 </div>
                 <h3 className="text-[26px] font-extrabold tracking-[-0.04em] text-white sm:text-[30px]">{phase}</h3>
                 <p className="mt-3 text-[14px] leading-[1.7] text-white/55">
@@ -597,13 +778,13 @@ export default function Landing() {
                   />
                 </div>
                 <div className="mt-4 flex items-center justify-between text-[13px] text-white/48">
-                  <span>Progress</span>
+                  <span>{phase === "Closed Alpha" ? "Active milestone" : "Progress"}</span>
                   <span className="font-mono">{percent}</span>
                 </div>
                 <div className="mt-8 rounded-[20px] border border-white/10 bg-white/6 p-4">
                   <div className="mb-3 flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.14em] text-white/35">
                     <span>Milestone</span>
-                    <span>{status}</span>
+                    <span>{phase === "Closed Alpha" ? "Activity" : "Status"}</span>
                   </div>
                   <div className="grid gap-2">
                     <div className="h-3 rounded-full bg-white/10">
@@ -622,10 +803,60 @@ export default function Landing() {
               </Card>
             </motion.div>
           ))}
+          </div>
         </div>
       </section>
 
-      <section id="waitlist" className="bg-[var(--background)] px-4 pb-16 pt-4 sm:px-6 sm:pb-20 lg:px-8">
+      <section className="bg-[var(--background)] px-5 py-12 sm:px-8 sm:py-16 md:py-24 lg:px-12 lg:py-28">
+        <motion.div {...fadeUp} className="mx-auto max-w-7xl">
+          <SectionTag>07 — FAQ</SectionTag>
+          <h2 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
+            Questions,
+            <br />
+            answered simply.
+          </h2>
+        </motion.div>
+
+        <div className="mx-auto mt-8 max-w-5xl space-y-3 sm:mt-12 sm:space-y-4">
+          {[
+            ["What is Flekvar?", "Flekvar is a private professional identity layer for Web3. It helps you prove your track record without exposing your wallet."],
+            ["Does Flekvar expose my wallet?", "No. The point of Flekvar is to separate your professional identity from your financial history."],
+            ["Is this a public profile?", "No. Flekvar is not a public social profile or leaderboard. It is a selective credential layer."],
+            ["Who is Flekvar for?", "Builders, researchers, contributors, communities, and protocols that need better ways to verify work history."],
+            ["When can I get access?", "Early access is opening in phases. Join the waitlist to be part of the first onboarding group."],
+          ].map(([question, answer], index) => (
+            <motion.div key={question} {...fadeUp} transition={{ ...fadeUp.transition, delay: index * 0.04 }}>
+              <Card tone="white" interactive={false} className="overflow-hidden p-0">
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq((current) => (current === index ? null : index))}
+                  className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-7 sm:py-6"
+                >
+                  <span className="text-[18px] font-extrabold tracking-[-0.03em] text-[var(--ink)] sm:text-[22px]">{question}</span>
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--ink)] text-[20px] font-light text-[var(--primary)]">
+                    {openFaq === index ? "−" : "+"}
+                  </span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openFaq === index ? "auto" : 0,
+                    opacity: openFaq === index ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.22 }}
+                  className="overflow-hidden"
+                >
+                  <div className="border-t border-black/10 px-5 py-5 text-[15px] leading-[1.7] text-[var(--muted)] sm:px-7 sm:py-6">
+                    {answer}
+                  </div>
+                </motion.div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section id="waitlist" className="bg-[var(--background)] px-5 pb-16 pt-4 sm:px-8 sm:pb-20 lg:px-12">
         <motion.div
           {...fadeUp}
           ref={ctaRef}
@@ -638,67 +869,78 @@ export default function Landing() {
               y: ((event.clientY - bounds.top) / bounds.height) * 100,
             });
           }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[24px] border-[1.5px] border-[var(--ink)] bg-[var(--primary)] p-6 shadow-[5px_5px_0px_var(--ink)] sm:p-10 md:p-12 lg:p-16"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[24px] border-[1.5px] border-[var(--ink)] bg-[var(--ink)] p-5 shadow-[5px_5px_0px_var(--ink)] sm:p-10 md:p-12 lg:p-16"
         >
           <div
             className="pointer-events-none absolute inset-0"
             style={{
-              background: `radial-gradient(circle at ${pointer.x}% ${pointer.y}%, rgba(255,255,255,0.18), transparent 28%)`,
+              background: `radial-gradient(circle at ${pointer.x}% ${pointer.y}%, rgba(139,92,246,0.24), transparent 28%)`,
             }}
+          />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, -10, 0], x: [0, 8, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-[8%] top-[16%] h-2 w-2 rounded-full bg-[var(--primary)]/60"
+          />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, 12, 0], x: [0, -8, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+            className="absolute bottom-[18%] right-[12%] h-2.5 w-2.5 rounded-full bg-[var(--primary)]/45"
           />
           <div className="absolute right-[30px] top-1/2 hidden -translate-y-1/2 xl:block">
             <motion.div
               animate={reduceMotion ? undefined : { y: [0, -16, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="h-32 w-32 rounded-full border border-[var(--ink)]/35 2xl:h-40 2xl:w-40"
+              className="h-32 w-32 rounded-full border border-[var(--primary)]/35 2xl:h-40 2xl:w-40"
             />
           </div>
 
           <div className="relative max-w-[520px]">
-            <SectionTag>06 — Final CTA</SectionTag>
-            <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-[var(--ink)] sm:text-5xl md:text-6xl">
-              The future of reputation won’t be fully public.
-            </h2>
-            <p className="mt-4 text-[15px] leading-[1.65] text-black/65 sm:text-[16px]">
-              Join the first users shaping portable onchain identity.
-            </p>
-            <div className="mt-8 flex max-w-[520px] flex-col gap-3 sm:flex-row">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="h-[52px] min-w-0 flex-1 rounded-full border-[1.5px] border-[var(--ink)] bg-white px-5 text-[15px] text-[var(--ink)] outline-none placeholder:text-black/35"
-              />
-              <Button variant="white" className="w-full sm:w-auto">Reserve My Spot</Button>
+            <SectionTag dark>08 — Final CTA</SectionTag>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--primary)]">
+              <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
+              Founding Member
             </div>
+            <h2 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
+              Become an early
+              <br />
+              Flekvar user.
+            </h2>
+            <p className="mt-4 text-[15px] leading-[1.7] text-white/60 sm:text-[16px]">
+              Join the first builders helping shape private professional identity for Web3.
+              Limited onboarding. Early access only.
+            </p>
+            <WaitlistForm tone="dark" buttonLabel="Reserve My Spot" className="mt-8 max-w-[520px]" />
+            <WaitlistCounter tone="dark" className="mt-4" />
           </div>
         </motion.div>
       </section>
 
-      <footer className="bg-[var(--ink)] px-4 pb-10 pt-16 sm:px-6 lg:px-8">
+      <footer className="bg-[var(--ink)] px-5 pb-10 pt-12 sm:px-8 sm:pt-16 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div>
-            <div className="mb-3 text-[24px] font-extrabold tracking-[-0.04em] text-white">Flekvar</div>
-            <p className="max-w-[260px] text-[14px] leading-[1.6] text-white/40">
-              Privacy-first reputation and identity infrastructure for the next generation of onchain users.
-            </p>
+          <div className="mb-10 flex flex-col items-center gap-10 text-center md:mb-12 md:flex-row md:items-start md:justify-between md:text-left">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="mb-3 text-[24px] font-extrabold tracking-[-0.04em] text-white">Flekvar</div>
+              <p className="max-w-[260px] text-[14px] leading-[1.6] text-white/40">
+                Privacy-first reputation and identity infrastructure for the next generation of onchain users.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-4 md:gap-10">
+              {["Twitter/X", "GitHub", "Docs", "Privacy"].map((item) => (
+                <div key={item} className="text-center md:text-left">
+                  <div className="mb-3 text-[12px] font-bold uppercase tracking-[0.16em] text-white/38 md:mb-4">{item}</div>
+                  <a href="#" className="text-[14px] text-white/70 transition-colors hover:text-[var(--primary)]">
+                    Open
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-4">
-            {["Twitter/X", "GitHub", "Docs", "Privacy"].map((item) => (
-              <div key={item}>
-                <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.16em] text-white/38">{item}</div>
-                <a href="#" className="text-[14px] text-white/70 transition-colors hover:text-[var(--primary)]">
-                  Open
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <p className="text-[13px] text-white/35">Flekvar © 2026</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2 md:justify-end">
               {["Privacy-first", "Portable reputation", "Built in public"].map((chip) => (
                 <span
                   key={chip}
