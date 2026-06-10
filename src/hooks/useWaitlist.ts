@@ -1,5 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getSupabaseClient, IS_BROWSER, WAITLIST_TABLE } from "@/lib/supabase";
+import { getWaitlistCount, joinWaitlist } from "@/lib/waitlist-server";
+
+const WAITLIST_TABLE = "waitlist" as const;
 
 const WAITLIST_COUNT_QUERY_KEY = ["waitlist", "count"] as const;
 
@@ -19,7 +21,7 @@ export function isDuplicateWaitlistError(error: unknown) {
   return "code" in error && error.code === "23505";
 }
 
-function explainWaitlistError(error: unknown) {
+export function explainWaitlistError(error: unknown) {
   if (!error || typeof error !== "object") {
     return null;
   }
@@ -44,14 +46,10 @@ function explainWaitlistError(error: unknown) {
 export function useWaitlistCount() {
   return useQuery({
     queryKey: WAITLIST_COUNT_QUERY_KEY,
-    enabled: IS_BROWSER,
     queryFn: async () => {
-      const supabase = getSupabaseClient();
-      const { count, error } = await supabase
-        .from(WAITLIST_TABLE)
-        .select("*", { count: "exact", head: true });
-
-      if (error) {
+      try {
+        return await getWaitlistCount();
+      } catch (error) {
         console.error("[waitlist] count error", {
           table: WAITLIST_TABLE,
           error,
@@ -59,8 +57,6 @@ export function useWaitlistCount() {
         });
         throw error;
       }
-
-      return count ?? 0;
     },
     staleTime: 30_000,
     gcTime: 5 * 60_000,
@@ -73,43 +69,11 @@ export function useWaitlist() {
   return useMutation({
     mutationFn: async (email: string) => {
       const normalizedEmail = normalizeEmail(email);
-      const supabase = getSupabaseClient();
-      const insertPayload = { email: normalizedEmail };
-
-      const { data: existingRow, error: existingError } = await supabase
-        .from(WAITLIST_TABLE)
-        .select("id")
-        .eq("email", normalizedEmail)
-        .maybeSingle();
-
-      if (existingError) {
-        console.error("[waitlist] duplicate precheck error", {
-          table: WAITLIST_TABLE,
-          email: normalizedEmail,
-          error: existingError,
-          explanation: explainWaitlistError(existingError),
+      try {
+        return await joinWaitlist({
+          data: { email: normalizedEmail },
         });
-        throw existingError;
-      }
-
-      if (existingRow) {
-        throw {
-          code: "23505",
-          message: "Email is already on the waitlist.",
-        };
-      }
-
-      const { data, error } = await supabase
-        .from(WAITLIST_TABLE)
-        .insert(insertPayload)
-        .select("id,email,created_at")
-        .single();
-
-      if (error) {
-        if (isDuplicateWaitlistError(error)) {
-          throw error;
-        }
-
+      } catch (error) {
         console.error("[waitlist] insert error", {
           table: WAITLIST_TABLE,
           email: normalizedEmail,
@@ -118,10 +82,12 @@ export function useWaitlist() {
         });
         throw error;
       }
-
-      return data;
     },
     onSuccess: async () => {
+      queryClient.setQueryData<number | undefined>(WAITLIST_COUNT_QUERY_KEY, (currentCount) =>
+        typeof currentCount === "number" ? currentCount + 1 : currentCount,
+      );
+
       await queryClient.invalidateQueries({ queryKey: WAITLIST_COUNT_QUERY_KEY });
     },
   });

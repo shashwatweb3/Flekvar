@@ -27,12 +27,25 @@ export const WAITLIST_TABLE = "waitlist" as const;
 export const IS_BROWSER = typeof window !== "undefined";
 
 function getSupabaseEnv() {
-  const url = import.meta.env.VITE_SUPABASE_URL;
-  const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  const url =
+    import.meta.env.VITE_SUPABASE_URL ??
+    import.meta.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey =
+    import.meta.env.VITE_SUPABASE_ANON_KEY ??
+    import.meta.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
+    const missing = [
+      !url ? "VITE_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_URL" : null,
+      !anonKey
+        ? "VITE_SUPABASE_ANON_KEY or NEXT_PUBLIC_SUPABASE_ANON_KEY"
+        : null,
+    ]
+      .filter(Boolean)
+      .join(", ");
+
     throw new Error(
-      "Missing Supabase environment variables. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.",
+      `Missing Supabase environment variables: ${missing}.`,
     );
   }
 

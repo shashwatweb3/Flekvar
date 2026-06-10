@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { testSupabaseConnection } from "@/lib/supabase";
+import { testWaitlistConnection } from "@/lib/waitlist-server";
 
 export const Route = createFileRoute("/env-debug")({
   component: EnvDebugPage,
@@ -24,7 +24,7 @@ function EnvDebugPage() {
   useEffect(() => {
     let active = true;
 
-    void testSupabaseConnection().then((result) => {
+    void testWaitlistConnection().then((result) => {
       if (!active) {
         return;
       }

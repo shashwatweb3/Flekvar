@@ -30,17 +30,19 @@ const WAITLIST_MODAL_COPY: Record<
   { title: string; body: string; button: string }
 > = {
   success: {
-    title: "🎉 You're on the Flekvar waitlist",
-    body: "Thanks for joining.\nWe'll reach out before early access opens.",
+    title: "You're on the list.",
+    body:
+      "You're now part of the first builders helping shape reputation infrastructure for Web3.\n\nYou'll receive:\n• Early access invitations\n• Product updates\n• Alpha testing opportunities\n• Community announcements\n\nNo spam. Only meaningful updates.",
     button: "Got it",
   },
   duplicate: {
-    title: "You're already on the waitlist",
-    body: "This email is already registered for Flekvar updates.",
+    title: "Already on the list.",
+    body:
+      "Looks like this email is already registered for early access.\n\nWe'll reach out when new updates become available.",
     button: "Okay",
   },
   error: {
-    title: "Something went wrong",
+    title: "Something went wrong. Please try again.",
     body: "Please try again in a few moments.",
     button: "Close",
   },
@@ -104,7 +106,7 @@ export default function WaitlistForm({
         <label htmlFor={inputId} className="sr-only">
           Email address
         </label>
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex flex-col items-stretch gap-3 sm:flex-row">
           <input
             id={inputId}
             type="email"
@@ -114,7 +116,7 @@ export default function WaitlistForm({
             autoComplete="email"
             disabled={waitlist.isPending}
             className={cn(
-              "min-h-12 flex-1 rounded-full border-[1.5px] px-5 text-[15px] outline-none transition-colors placeholder:text-black/35",
+              "min-h-12 w-full flex-1 rounded-full border-[1.5px] px-5 text-[15px] outline-none transition-colors placeholder:text-black/35",
               isDark
                 ? "border-white/15 bg-white text-[var(--ink)]"
                 : "border-[var(--ink)] bg-white text-[var(--ink)]",
@@ -124,7 +126,7 @@ export default function WaitlistForm({
             type="submit"
             disabled={waitlist.isPending}
             className={cn(
-              "inline-flex min-h-12 items-center justify-center rounded-full border-[1.5px] px-5 py-3 text-[14px] font-semibold transition-all duration-200 sm:px-8 sm:py-3.5 sm:text-[15px]",
+              "inline-flex min-h-12 w-full items-center justify-center rounded-full border-[1.5px] px-5 py-3 text-[14px] font-semibold transition-all duration-200 sm:w-auto sm:px-8 sm:py-3.5 sm:text-[15px]",
               isDark
                 ? "border-white/15 bg-[var(--primary)] text-white hover:bg-[color-mix(in_oklab,var(--primary)_88%,black)]"
                 : "border-[var(--ink)] bg-[var(--ink)] text-[var(--primary)] hover:bg-[color-mix(in_oklab,var(--ink)_85%,transparent)]",
