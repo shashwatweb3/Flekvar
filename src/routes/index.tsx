@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHost } from "@tanstack/react-start/server";
-import AccessGatedHome from "@/components/access-gated-home";
+import Landing from "@/components/Landing";
 import WaitlistStandalone from "@/components/waitlist-standalone";
 import DeckPage from "@/components/deck-page";
 
@@ -26,5 +26,5 @@ function HomeRoute() {
   if (surface === "waitlist") return <WaitlistStandalone />;
   if (surface === "deck") return <DeckPage />;
 
-  return <AccessGatedHome />;
+  return <Landing />;
 }
